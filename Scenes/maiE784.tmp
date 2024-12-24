@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://lfakkp67yrls"]
+
+[ext_resource type="Script" path="res://Scripts/platform.gd" id="1_12mu5"]
+[ext_resource type="PackedScene" uid="uid://cm3acj5ruwlvh" path="res://Scenes/platform.tscn" id="2_rkueu"]
+[ext_resource type="PackedScene" uid="uid://burerfg48yl0t" path="res://Scenes/ship.tscn" id="2_xy2md"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_35bh4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t3kyk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fvay6"]
+sky_material = SubResource("ProceduralSkyMaterial_t3kyk")
+
+[sub_resource type="Environment" id="Environment_8dool"]
+background_mode = 2
+sky = SubResource("Sky_fvay6")
+tonemap_mode = 2
+
+[node name="Main" type="Node3D"]
+
+[node name="Heaven\'s Boundary" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.43907, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Heaven\'s Boundary"]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, 0, 0)
+shape = SubResource("BoxShape3D_35bh4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8dool")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Platform" type="Node" parent="."]
+script = ExtResource("1_12mu5")
+
+[node name="Platform" parent="Platform" instance=ExtResource("2_rkueu")]
+gravity_scale = 0.0
+
+[node name="Platform2" parent="Platform" instance=ExtResource("2_rkueu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -134)
+
+[node name="Ship" parent="." instance=ExtResource("2_xy2md")]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.62449, -8.84782)
+text = "GOOGGAAAGAA"
