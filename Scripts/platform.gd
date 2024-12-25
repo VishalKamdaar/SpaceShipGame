@@ -2,7 +2,7 @@ extends Node
 
 
 @export_dir var platformPath = "res://Platforms"
-@onready var scoreLabel = $"../Camera3D/Score"
+@onready var scoreLabel = %Score
 
 
 var platformScenes: Array = []

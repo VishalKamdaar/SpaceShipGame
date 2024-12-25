@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
 
-const MAXSPEED = 16
+const MAXSPEED = 30
 const MAXROTATEZ = 25
 const MAXROTATEX = 25
 
 # Not so aptly named. Change them later.
-var speed = 0
+var speed = 5
 var rAccelZ = 5
 var rAccelX = 5
 
@@ -27,7 +27,6 @@ func _physics_process(delta):
 		# Slowly increases acceleration for translation
 		if speed < MAXSPEED:
 			speed+=.5
-		
 		
 		# Rotation(Rolling) and translation on the z axis (horizontal).
 		if input_dir.x != 0:
@@ -51,12 +50,10 @@ func _physics_process(delta):
 			# Use this if it eventually works
 			# rotate_to_0(self.rotation.z, rAccelZ)
 
-
 		# Rotation(Pitching) and translation on the x axis (vertically).
 		if input_dir.y != 0:
-			
 			# Assigning normally works for some reason but not for x_dir.
-			var y_dir = -1 if (input_dir.y > 0) else 1
+			var y_dir = 1 if (input_dir.y > 0) else -1
 			
 			# Performs and limits rotation in both directions
 			if abs(rad_to_deg(self.rotation.x) + rAccelX * y_dir) < abs(MAXROTATEX):
@@ -76,7 +73,7 @@ func _physics_process(delta):
 			# rotate_to_0(self.rotation.z, rAccelZ)
 
 	else:
-		# Slows ship down slowly
+		# Slows ship momentum down slowly
 		if(speed > 0):
 			speed-=.5
 		
@@ -89,7 +86,8 @@ func _physics_process(delta):
 		# rotate_to_0(self.rotation.z, rAccelZ)
 		# rotate_to_0(self.rotation.x, rAccelX)
 	
-	# Done mainly to get collision
+	# Done only to get collision.
+	# This was also the built in code that would apply the velocity changes and collision calculations
 	move_and_slide()
 	
 	# Restarts level if collided with obstacle

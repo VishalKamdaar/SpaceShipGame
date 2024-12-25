@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://lfakkp67yrls"]
+[gd_scene load_steps=9 format=3 uid="uid://lfakkp67yrls"]
 
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="1_12mu5"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_ryuqm"]
 [ext_resource type="PackedScene" uid="uid://burerfg48yl0t" path="res://Scenes/ship.tscn" id="2_xy2md"]
+[ext_resource type="Script" path="res://Scenes/camera_3d.gd" id="4_25xyw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_35bh4"]
 
@@ -41,12 +42,16 @@ shadow_enabled = true
 script = ExtResource("1_12mu5")
 
 [node name="Ship" parent="." instance=ExtResource("2_xy2md")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.82086, 0.571129, 0, -0.571129, 0.82086, 0, 10.847, 11.2251)
+current = true
+script = ExtResource("4_25xyw")
 
 [node name="Score" type="Label3D" parent="Camera3D"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71111, 1.40109, -2.04963)
 text = "Distance Travelled: "
 horizontal_alignment = 0
