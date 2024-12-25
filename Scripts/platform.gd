@@ -10,7 +10,7 @@ var platformScenes: Array = []
 var conveyerBelt: Array[MeshInstance3D] = []
 
 var cbSize = 4
-var speed = 20
+var speed = 35
 var score = 0
 func _ready():
 	load_platforms(platformPath)
@@ -31,7 +31,7 @@ func _process(delta):
 		scoreLabel.text = "Distance Travelled: %d" % score
 	
 	if int(score) % 100 == 99:
-		speed += .2
+		speed += 1
 	if conveyerBelt[0].position.z >= conveyerBelt[0].get_aabb().size.z:
 		var lastP = conveyerBelt[-1]
 		

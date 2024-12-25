@@ -11,7 +11,7 @@ var rAccelZ = 5
 var rAccelX = 5
 
 @onready var ship = $SHIP
-@onready var animationPlayer = $AnimationPlayer
+
 
 # Feels like a very shit way to implement rotation but it works prefectly well.
 # Revisit Vectors, Matrices, Quaternions.
@@ -53,7 +53,7 @@ func _physics_process(delta):
 		# Rotation(Pitching) and translation on the x axis (vertically).
 		if input_dir.y != 0:
 			# Assigning normally works for some reason but not for x_dir.
-			var y_dir = 1 if (input_dir.y > 0) else -1
+			var y_dir = -1 if (input_dir.y > 0) else 1
 			
 			# Performs and limits rotation in both directions
 			if abs(rad_to_deg(self.rotation.x) + rAccelX * y_dir) < abs(MAXROTATEX):

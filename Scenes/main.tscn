@@ -18,8 +18,9 @@ sky_material = SubResource("ProceduralSkyMaterial_t3kyk")
 background_mode = 2
 sky = SubResource("Sky_fvay6")
 tonemap_mode = 2
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0395
+fog_enabled = true
+fog_light_color = Color(0.468505, 0.573822, 0.579421, 1)
+volumetric_fog_density = 0.02
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ryuqm")
@@ -46,12 +47,13 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.82086, 0.571129, 0, -0.571129, 0.82086, 0, 10.847, 11.2251)
+transform = Transform3D(1, 0, 0, 0, 0.82086, 0.571129, 0, -0.571129, 0.82086, 0, 15.287, 13.445)
 current = true
 script = ExtResource("4_25xyw")
 
 [node name="Score" type="Label3D" parent="Camera3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71111, 1.40109, -2.04963)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.651, 1.501, -2.05)
 text = "Distance Travelled: "
+font_size = 16
 horizontal_alignment = 0
