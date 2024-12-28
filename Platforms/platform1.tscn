@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://b620ei3tdesrs"]
+[gd_scene load_steps=9 format=4 uid="uid://b620ei3tdesrs"]
 
-[ext_resource type="PackedScene" uid="uid://dab0anvgi3p21" path="res://Assets/grassPlatform.glb" id="1_8cqt2"]
+[ext_resource type="PackedScene" uid="uid://s7hnxjspsaeu" path="res://Assets/grassPlatform.glb" id="1_8cqt2"]
+[ext_resource type="PackedScene" uid="uid://dvxg4ed1cctyu" path="res://Scenes/grass_platform.tscn" id="2_tr33x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f34xy"]
 resource_name = "Material.004"
@@ -80,7 +81,6 @@ shadow_mesh = SubResource("ArrayMesh_vur3w")
 
 [node name="basePlatform" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-visible = false
 mesh = SubResource("ArrayMesh_jpc6a")
 skeleton = NodePath("")
 
@@ -102,7 +102,8 @@ shape = SubResource("WorldBoundaryShape3D_7tvwh")
 shape = SubResource("WorldBoundaryShape3D_pcvqm")
 
 [node name="grassPlatform" parent="." instance=ExtResource("1_8cqt2")]
-transform = Transform3D(-1.01324, 0, -1.18471e-07, 0, 1, 0, 8.85806e-08, 0, -1.35515, -0.0314096, -0.412, -59.8014)
+transform = Transform3D(-1.01324, 0, -2.04622e-07, 0, 1, 0, 1.52995e-07, 0, -1.35515, -0.0314096, -0.412, -59.8014)
+visible = false
 
-[node name="grassPlatform2" parent="." instance=ExtResource("1_8cqt2")]
-transform = Transform3D(1.01324, 0, 1.20361e-14, 0, 1, 0, -8.99937e-15, 0, 1.35515, -0.0323011, -0.411831, -59.801)
+[node name="grassPlatform2" parent="." instance=ExtResource("2_tr33x")]
+transform = Transform3D(0.929, 0, 0, 0, 1, 0, 0, 0, 1.355, -0.031, 0, -59.801)

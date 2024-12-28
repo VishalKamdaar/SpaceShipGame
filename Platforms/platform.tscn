@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://cm3acj5ruwlvh"]
+[gd_scene load_steps=11 format=4 uid="uid://cm3acj5ruwlvh"]
 
-[ext_resource type="PackedScene" uid="uid://dab0anvgi3p21" path="res://Assets/grassPlatform.glb" id="1_3kxia"]
+[ext_resource type="PackedScene" uid="uid://s7hnxjspsaeu" path="res://Assets/grassPlatform.glb" id="1_3kxia"]
+[ext_resource type="PackedScene" uid="uid://dvxg4ed1cctyu" path="res://Scenes/grass_platform.tscn" id="2_yrrr4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f34xy"]
 resource_name = "Material.004"
@@ -105,10 +106,8 @@ shape = SubResource("WorldBoundaryShape3D_kspmj")
 shape = SubResource("WorldBoundaryShape3D_ae5vy")
 
 [node name="grassPlatform" parent="." instance=ExtResource("1_3kxia")]
-transform = Transform3D(-1.01324, 0, -1.18471e-07, 0, 1, 0, 8.85806e-08, 0, -1.35515, -0.0314096, -0.412, -59.8014)
-
-[node name="grassPlatform2" parent="." instance=ExtResource("1_3kxia")]
-transform = Transform3D(1.01324, 0, 1.20361e-14, 0, 1, 0, -8.99937e-15, 0, 1.35515, -0.0323011, -0.411831, -59.801)
+transform = Transform3D(-0.928666, 0, -1.18471e-07, 0, 1, 0, 8.11869e-08, 0, -1.35515, -0.0314096, -0.412, -59.8014)
+visible = false
 
 [node name="Obstacle" type="StaticBody3D" parent="."]
 transform = Transform3D(5.45488, 0, 0, 0, 6.87751, 0, 0, 0, 1, -7.08226, 3.51033, -55.2833)
@@ -136,3 +135,6 @@ shape = SubResource("BoxShape3D_mlucl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle3"]
 mesh = SubResource("BoxMesh_exs2a")
+
+[node name="grassPlatform2" parent="." instance=ExtResource("2_yrrr4")]
+transform = Transform3D(0.929, 0, 0, 0, 1, 0, 0, 0, 1.355, -0.031, 0, -59.801)
