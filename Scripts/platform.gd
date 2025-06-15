@@ -2,15 +2,15 @@ extends Node
 
 
 @export_dir var platformPath = "res://Platforms"
-@onready var scoreLabel = $"../Camera3D/Score"
+@onready var scoreLabel = %Score
 
 
 var platformScenes: Array = []
 
-var conveyerBelt: Array[MeshInstance3D] = []
+var conveyerBelt: Array = []
 
 var cbSize = 4
-var speed = 20
+var speed = 35
 var score = 0
 func _ready():
 	load_platforms(platformPath)
@@ -18,7 +18,7 @@ func _ready():
 	for i in range(cbSize):
 		var platform = platformScenes.pick_random().instantiate()
 		platform.position.z = len
-		len -= platform.get_aabb().size.z
+		len -= platform.find_child("basePlatform", false).get_aabb().size.z
 		# print(platform.position.z)
 		add_child(platform)
 		conveyerBelt.append(platform)
@@ -31,12 +31,12 @@ func _process(delta):
 		scoreLabel.text = "Distance Travelled: %d" % score
 	
 	if int(score) % 100 == 99:
-		speed += .2
-	if conveyerBelt[0].position.z >= conveyerBelt[0].get_aabb().size.z:
+		speed += 1
+	if conveyerBelt[0].position.z >= conveyerBelt[0].find_child("basePlatform", false).get_aabb().size.z:
 		var lastP = conveyerBelt[-1]
 		
 		var p = platformScenes.pick_random().instantiate()
-		p.position.z = lastP.position.z - lastP.get_aabb().size.z
+		p.position.z = lastP.position.z - lastP.find_child("basePlatform", false).get_aabb().size.z
 		add_child(p)
 		conveyerBelt.append(p)
 		conveyerBelt.pop_front().queue_free()
