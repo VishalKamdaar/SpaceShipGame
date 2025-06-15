@@ -1,22 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://lfakkp67yrls"]
+[gd_scene load_steps=9 format=3 uid="uid://lfakkp67yrls"]
 
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="1_12mu5"]
+[ext_resource type="Texture2D" uid="uid://beh4pfeeurm5r" path="res://Assets/the_sky_is_on_fire_2k.exr" id="1_ipkog"]
 [ext_resource type="PackedScene" uid="uid://burerfg48yl0t" path="res://Scenes/ship.tscn" id="2_xy2md"]
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="4_25xyw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_35bh4"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t3kyk"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v4e38"]
+panorama = ExtResource("1_ipkog")
 
 [sub_resource type="Sky" id="Sky_fvay6"]
-sky_material = SubResource("ProceduralSkyMaterial_t3kyk")
+sky_material = SubResource("PanoramaSkyMaterial_v4e38")
 
 [sub_resource type="Environment" id="Environment_8dool"]
 background_mode = 2
 sky = SubResource("Sky_fvay6")
+sky_custom_fov = 160.7
 tonemap_mode = 2
+tonemap_exposure = 1.21
+tonemap_white = 1.75
+ssil_radius = 9.0
+ssil_intensity = 13.15
 fog_light_color = Color(0.468505, 0.573822, 0.579421, 1)
 volumetric_fog_density = 0.02
 
@@ -33,7 +38,8 @@ shape = SubResource("BoxShape3D_35bh4")
 environment = SubResource("Environment_8dool")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, -29.9359, 90.2142, 103.152)
+light_energy = 0.828
 shadow_enabled = true
 
 [node name="Platform" type="Node" parent="."]
